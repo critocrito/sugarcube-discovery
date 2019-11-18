@@ -1,0 +1,6 @@
+{
+  "hooks": {
+    "pre-commit": "! git rev-parse --abbrev-ref HEAD | grep -q master || (npm run type-check && lint-staged)",
+    "commit-msg": "! git rev-parse --abbrev-ref HEAD | grep -q master || commitlint -E HUSKY_GIT_PARAMS"
+  }
+}

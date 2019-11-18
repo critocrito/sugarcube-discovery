@@ -1,0 +1,16 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "targets": "> 0.25%, not dead"
+      }
+    ],
+    "@babel/preset-typescript",
+    "@babel/react"
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-object-rest-spread",
+    "syntax-trailing-function-commas"
+  ]
+}
