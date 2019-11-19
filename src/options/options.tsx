@@ -24,5 +24,5 @@ const App = () => {
   );
 };
 
-const domContainer = document.querySelector("#app");
+const domContainer = document.querySelector("#options");
 ReactDOM.render(<App />, domContainer);
