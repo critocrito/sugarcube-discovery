@@ -2,27 +2,14 @@ import "./options.css";
 
 import React from "react";
 import ReactDOM from "react-dom";
+import {Container} from "semantic-ui-react";
 
-import Preferences from "../components/Preferences";
-
-const saveOption = (key: string, value: string) => {
-  return browser.storage.sync.set({[key]: value});
-};
-
-const restoreOption = async (key: string) => {
-  const options = await browser.storage.sync.get(key);
-  const option = options[key];
-  if (option) return option.toString();
-  return null;
-};
-
-const App = () => {
-  return (
-    <div>
-      <Preferences save={saveOption} restore={restoreOption} />
-    </div>
-  );
-};
+import ProjectPreferences from "../components/ProjectPreferences";
 
 const domContainer = document.querySelector("#options");
-ReactDOM.render(<App />, domContainer);
+ReactDOM.render(
+  <Container>
+    <ProjectPreferences />
+  </Container>,
+  domContainer,
+);
