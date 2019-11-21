@@ -16,3 +16,4 @@ dist
 .eslintcache
 .env
 web-ext-artifacts
+target

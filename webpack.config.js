@@ -10,8 +10,8 @@ const pkg = require("./package.json");
 
 module.exports = {
   entry: {
-    popup: "./src/popup/popup.tsx",
-    options: "./src/options/options.tsx",
+    popup: "./src/js/popup/popup.tsx",
+    options: "./src/js/options/options.tsx",
   },
 
   output: {
@@ -72,11 +72,11 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebPackPlugin({
-      template: "./src/popup/popup.html",
+      template: "./src/js/popup/popup.html",
       filename: "./popup.html",
     }),
     new HtmlWebPackPlugin({
-      template: "./src/options/options.html",
+      template: "./src/js/options/options.html",
       filename: "./options.html",
     }),
     new CopyPlugin([{from: "icons", to: "icons"}]),

@@ -21,7 +21,7 @@
     "compile:watch": "yarn compile:dev -w",
     "dev": "web-ext run -s ./dist",
     "fix": "yarn lint --fix",
-    "lint": "eslint src/**/*.ts src/**/*.tsx",
+    "lint": "eslint src/js/**/*.ts src/js/**/*.tsx",
     "prestart": "yarn compile:dev",
     "start": "concurrently --kill-others \"yarn compile:watch\" \"yarn type-check:watch\" \"yarn dev\"",
     "type-check": "tsc --noEmit",
