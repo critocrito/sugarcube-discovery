@@ -1,0 +1,7 @@
+{
+  "globalImports": ["./src/popup/popup.css"],
+  "watchDirs": ["src"],
+  "webpack": {
+    "configPath": "./webpack.cosmos.js"
+  }
+}

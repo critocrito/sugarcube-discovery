@@ -64,7 +64,12 @@
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": ["webpack.config.js", "test/**/*.ts"]
+        "devDependencies": [
+          "webpack.*.js",
+          "index.cosmos.tsx",
+          "test/**/*.ts",
+          "__fixtures__/**/*.tsx"
+        ]
       }
     ],
     "simple-import-sort/sort": "error",
