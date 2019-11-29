@@ -66,7 +66,7 @@ module.exports = {
   },
 
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new HtmlWebPackPlugin({
       template: "./src/js/popup/popup.html",
       filename: "./popup.html",
