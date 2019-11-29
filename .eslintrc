@@ -67,7 +67,8 @@
         "devDependencies": [
           "webpack.*.js",
           "index.cosmos.tsx",
-          "test/**/*.ts",
+          "test-setup.js",
+          "test/**/*",
           "__fixtures__/**/*.tsx"
         ]
       }

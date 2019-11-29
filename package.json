@@ -23,12 +23,14 @@
     "cosmos:export": "cosmos-export",
     "dev": "web-ext run -s ./dist",
     "fix": "yarn lint --fix",
-    "lint": "eslint src/js/**/*.ts src/js/**/*.tsx",
+    "lint": "eslint src/**/*.ts src/**/*.tsx test/**/*",
     "prestart": "yarn compile:dev",
     "start": "concurrently --kill-others \"yarn compile:watch\" \"yarn type-check:watch\" \"yarn dev\"",
+    "test": "ava --verbose",
+    "test:watch": "yarn test -- --watch",
     "type-check": "tsc --noEmit",
     "type-check:watch": "yarn type-check --watch",
-    "verify": "yarn lint && yarn type-check"
+    "verify": "yarn lint && yarn type-check && yarn test"
   },
   "dependencies": {
     "react": "^16.12.0",
@@ -48,11 +50,14 @@
     "@babel/preset-typescript": "^7.7.2",
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
+    "@testing-library/react": "^9.3.2",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.4",
+    "@types/sinon": "^7.5.1",
     "@typescript-eslint/eslint-plugin": "^2.7.0",
     "@typescript-eslint/parser": "^2.7.0",
     "autoprefix": "^1.0.1",
+    "ava": "^2.4.0",
     "babel-plugin-syntax-trailing-function-commas": "^6.22.0",
     "clean-webpack-plugin": "^3.0.0",
     "concurrently": "^5.0.0",
@@ -73,9 +78,12 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^3.0.9",
+    "jsdom": "^15.2.1",
+    "jsdom-global": "^3.0.2",
     "jsonlint": "^1.6.3",
     "lint-staged": "^9.4.3",
     "mini-css-extract-plugin": "^0.8.0",
+    "pirates": "^4.0.1",
     "postcss-css-variables": "^0.13.0",
     "postcss-import": "^12.0.1",
     "postcss-load-plugins": "^2.3.0",
@@ -86,8 +94,10 @@
     "prettier-package-json": "^2.1.0",
     "react-cosmos": "^5.0.0-rc.0",
     "rimraf": "^3.0.0",
+    "sinon": "^7.5.0",
     "standard-version": "^7.0.0",
     "ts-loader": "^6.2.1",
+    "ts-node": "^8.5.4",
     "typescript": "^3.7.2",
     "typescript-eslint-parser": "^22.0.0",
     "typescript-language-server": "^0.4.0",
@@ -97,5 +107,20 @@
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-extension-manifest-plugin": "^0.5.0"
+  },
+  "ava": {
+    "require": [
+      "ts-node/register/transpile-only",
+      "jsdom-global/register",
+      "./test-setup.js"
+    ],
+    "files": [
+      "test/**/*"
+    ],
+    "extensions": [
+      "ts",
+      "tsx"
+    ],
+    "compileEnhancements": false
   }
 }
