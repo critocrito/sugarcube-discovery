@@ -1,6 +1,7 @@
 import {Project} from "./types";
 
 type ProjectStorage = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   projects: Project[] | any;
 };
 
@@ -14,6 +15,7 @@ const fetchProjects = async (): Promise<Project[]> => {
 
 const storeProjects = async (projects: Project[]): Promise<void> => {
   // casting to any was the only I found to make the types check.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   await browser.storage.local.set({projects: projects as any});
 };
 
