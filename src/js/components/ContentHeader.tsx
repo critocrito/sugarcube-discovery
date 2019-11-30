@@ -12,46 +12,35 @@ const ContentHeader = ({url}: ContentHeaderProps) => {
   const {type, platform} = detectContent(url);
 
   let desc;
+  let icon;
   switch (type) {
     case "youtube_video": {
       desc = "Youtube Video";
+      icon = <Youtube size={34} />;
       break;
     }
     case "youtube_channel": {
       desc = "Youtube Channel";
+      icon = <Youtube size={34} />;
       break;
     }
     case "twitter_tweet": {
       desc = "Twitter Tweet";
+      icon = <Twitter size={34} />;
       break;
     }
     case "twitter_user": {
       desc = "Twitter Feed";
+      icon = <Twitter size={34} />;
       break;
     }
     case "facebook_post": {
       desc = "Facebook Post";
-      break;
-    }
-    default:
-      desc = "Website Archival";
-  }
-
-  let icon;
-  switch (platform) {
-    case "youtube": {
-      icon = <Youtube size={34} />;
-      break;
-    }
-    case "twitter": {
-      icon = <Twitter size={34} />;
-      break;
-    }
-    case "facebook": {
       icon = <Facebook size={34} />;
       break;
     }
     default:
+      desc = "Website Archival";
       icon = <Code size={34} />;
   }
 
