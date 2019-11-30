@@ -63,13 +63,13 @@ const ContentHeader = ({url}: ContentHeaderProps) => {
       >
         &nbsp;
       </div>
-      <div className="w-100 pl2 mt1 flex items-center">
+      <div className="w-100 pl3 pr3 mt1 flex items-center">
         <span>{icon}</span>
         <h2 className="f3 lh-title ttu tracked ml3 mt0 mb0 flex items-center">
           {desc}
         </h2>
       </div>
-      <span className="f6 lh-copy i pl2">{url}</span>
+      <span className="f6 lh-copy i pl3 pr3">{url}</span>
     </div>
   );
 };
