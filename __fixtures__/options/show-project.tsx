@@ -1,6 +1,6 @@
 import React from "react";
 
-import ProjectShow from "../../src/components/ProjectShow";
+import ProjectShow from "../../src/js/components/ProjectShow";
 
 const project = {
   id: "haha",

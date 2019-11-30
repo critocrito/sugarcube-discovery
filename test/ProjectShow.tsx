@@ -3,7 +3,7 @@ import test from "ava";
 import React from "react";
 import sinon from "sinon";
 
-import ProjectShow from "../src/components/ProjectShow";
+import ProjectShow from "../src/js/components/ProjectShow";
 
 const project = {
   id: "haha",

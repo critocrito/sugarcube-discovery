@@ -27,7 +27,7 @@
     "prestart": "yarn compile:dev",
     "start": "concurrently --kill-others \"yarn compile:watch\" \"yarn type-check:watch\" \"yarn dev\"",
     "test": "ava --verbose",
-    "test:watch": "yarn test -- --watch",
+    "test:watch": "yarn test --watch",
     "type-check": "tsc --noEmit",
     "type-check:watch": "yarn type-check --watch",
     "verify": "yarn lint && yarn type-check && yarn test"
