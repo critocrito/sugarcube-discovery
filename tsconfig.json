@@ -2,7 +2,7 @@
   "compilerOptions": {
     "strict": true,
     "lib": ["es6", "dom"],
-    "target": "ESNext",
+    "target": "es2018",
     "esModuleInterop": true,
     "sourceMap": true,
     "moduleResolution": "node",

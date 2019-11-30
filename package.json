@@ -114,8 +114,14 @@
       "jsdom-global/register",
       "./test-setup.js"
     ],
+    "sources": [
+      "src/js/**/*"
+    ],
     "files": [
       "test/**/*"
+    ],
+    "helpers": [
+      "test/helpers/**/*"
     ],
     "extensions": [
       "ts",
