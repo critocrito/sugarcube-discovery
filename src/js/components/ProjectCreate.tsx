@@ -40,6 +40,7 @@ const ProjectCreate = ({
               onChange={handleChange}
               label="Name"
               type="text"
+              data-testid="input-name"
             />
             <Form.Input
               name="endpoint"
@@ -48,6 +49,7 @@ const ProjectCreate = ({
               onChange={handleChange}
               label="HTTP Endpoint"
               type="text"
+              data-testid="input-endpoint"
             />
             <Form.Input
               name="apiKey"
@@ -56,6 +58,7 @@ const ProjectCreate = ({
               onChange={handleChange}
               label="API Key"
               type="text"
+              data-testid="input-api-key"
             />
           </Form>
         </Card.Description>

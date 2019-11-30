@@ -22,10 +22,20 @@ const ProjectShow = ({
       </Card.Content>
       <Card.Content extra>
         <div className="ui two buttons">
-          <Button basic color="red" onClick={deleteHandler}>
+          <Button
+            basic
+            color="red"
+            onClick={deleteHandler}
+            data-testid="delete-button"
+          >
             Delete
           </Button>
-          <Button basic color="yellow" onClick={editHandler}>
+          <Button
+            basic
+            color="yellow"
+            onClick={editHandler}
+            data-testid="edit-button"
+          >
             Edit
           </Button>
         </div>
