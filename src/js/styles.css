@@ -1,0 +1,25 @@
+@import "semantic-ui-css/semantic.min.css";
+@import "tachyons";
+
+:root {
+  --color-youtube: #f00;
+  --color-twitter: #1da1f2;
+  --color-facebook: #4267b2;
+  --color-http: grey;
+}
+
+.bg-youtube {
+  background-color: var(--color-youtube);
+}
+
+.bg-twitter {
+  background-color: var(--color-twitter);
+}
+
+.bg-facebook {
+  background-color: var(--color-facebook);
+}
+
+.bg-http {
+  background-color: var(--color-http);
+}
