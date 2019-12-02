@@ -1,6 +1,6 @@
 import React from "react";
 
-import ProjectItem from "../../src/js/components/ProjectItem";
+import ProjectShow from "../src/js/components/ProjectShow";
 
 const project = {
   id: "haha",
@@ -10,9 +10,9 @@ const project = {
 };
 
 export default (
-  <ProjectItem
+  <ProjectShow
     project={project}
-    deleteHandler={async (_) => undefined}
-    editHandler={async (_) => undefined}
+    deleteHandler={async () => undefined}
+    editHandler={async () => undefined}
   />
 );

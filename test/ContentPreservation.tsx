@@ -2,7 +2,7 @@ import {cleanup, render} from "@testing-library/react";
 import test from "ava";
 import React from "react";
 
-import ContentHeader from "../src/js/components/ContentHeader";
+import ContentPreservation from "../src/js/components/ContentPreservation";
 
 const videoUrl = "https://www.youtube.com/watch?v=tcCBtSjKEzI";
 const channelUrl = "https://www.youtube.com/channel/UCegnDJbvrOhvbLU3IzeIV8A";
@@ -15,7 +15,7 @@ test.afterEach(cleanup);
 
 test("show human description and color coding for youtube video", (t) => {
   const {unmount, getByTestId, queryByText} = render(
-    <ContentHeader url={videoUrl} />,
+    <ContentPreservation url={videoUrl} />,
   );
 
   t.true(
@@ -28,7 +28,7 @@ test("show human description and color coding for youtube video", (t) => {
 
 test("show human description and color coding for youtube channel", (t) => {
   const {unmount, getByTestId, queryByText} = render(
-    <ContentHeader url={channelUrl} />,
+    <ContentPreservation url={channelUrl} />,
   );
 
   t.true(
@@ -41,7 +41,7 @@ test("show human description and color coding for youtube channel", (t) => {
 
 test("show human description and color coding for twitter tweet", (t) => {
   const {unmount, getByTestId, queryByText} = render(
-    <ContentHeader url={tweetUrl} />,
+    <ContentPreservation url={tweetUrl} />,
   );
 
   t.true(
@@ -54,7 +54,7 @@ test("show human description and color coding for twitter tweet", (t) => {
 
 test("show human description and color coding for twitter feed", (t) => {
   const {unmount, getByTestId, queryByText} = render(
-    <ContentHeader url={feedUrl} />,
+    <ContentPreservation url={feedUrl} />,
   );
 
   t.true(
@@ -67,7 +67,7 @@ test("show human description and color coding for twitter feed", (t) => {
 
 test("show human description and color coding for facebook post", (t) => {
   const {unmount, getByTestId, queryByText} = render(
-    <ContentHeader url={postUrl} />,
+    <ContentPreservation url={postUrl} />,
   );
 
   t.true(
@@ -80,7 +80,7 @@ test("show human description and color coding for facebook post", (t) => {
 
 test("show human description and color coding for website archival", (t) => {
   const {unmount, getByTestId, queryByText} = render(
-    <ContentHeader url={websiteUrl} />,
+    <ContentPreservation url={websiteUrl} />,
   );
 
   t.true(Array.from(getByTestId("color-coding").classList).includes("bg-http"));

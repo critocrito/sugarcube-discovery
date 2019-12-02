@@ -6,7 +6,7 @@ module.exports = {
     "48": "icons/sd-48.png",
   },
 
-  permissions: ["activeTab", "storage"],
+  permissions: ["tabs", "activeTab", "storage"],
 
   options_ui: {
     page: "options.html",

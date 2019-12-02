@@ -3,12 +3,13 @@ import React from "react";
 import {Code, Facebook, Twitter, Youtube} from "react-feather";
 
 import {detectContent} from "../utils";
+import Button from "./Button";
 
-interface ContentHeaderProps {
+interface ContentPreservationProps {
   url: string;
 }
 
-const ContentHeader = ({url}: ContentHeaderProps) => {
+const ContentPreservation = ({url}: ContentPreservationProps) => {
   const {type, platform} = detectContent(url);
 
   const iconSize = 28;
@@ -47,19 +48,24 @@ const ContentHeader = ({url}: ContentHeaderProps) => {
   }
 
   return (
-    <div
-      data-testid="color-coding"
-      className={c("flex flex-column w-100 white pa3", `bg-${platform}`)}
-    >
-      <div className="w-100 mt1 flex items-start">
-        <span>{icon}</span>
-        <h2 className="f3 lh-title ttu tracked ml3 mt0 mb0 flex items-center">
-          {desc}
-        </h2>
+    <>
+      <div className="flex flex-column w-100">
+        <div data-testid="color-coding" className={c("h1", `bg-${platform}`)}>
+          &nbsp;
+        </div>
+        <div className="w-100 mt2 lh-solid flex items-center pl2 color-main">
+          {icon}
+          <h2 className="f3 ttu tracked ml3 mt0 mb0">{desc}</h2>
+        </div>
+        <span className="mt1 f7 i pl2">{url}</span>
+        <div className="mt5 mb3 tc">
+          <Button size="large" type="primary">
+            Preserve
+          </Button>
+        </div>
       </div>
-      <span className="f6 lh-copy i">{url}</span>
-    </div>
+    </>
   );
 };
 
-export default ContentHeader;
+export default ContentPreservation;

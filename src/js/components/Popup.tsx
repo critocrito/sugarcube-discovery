@@ -1,6 +1,8 @@
 import React from "react";
 
-import ContentHeader from "./ContentHeader";
+import ContentPreservation from "./ContentPreservation";
+import Footer from "./Footer";
+import Header from "./Header";
 
 interface PopupProps {
   url: string;
@@ -8,8 +10,10 @@ interface PopupProps {
 
 const Popup = ({url}: PopupProps) => {
   return (
-    <div className="pb3">
-      <ContentHeader url={url} />
+    <div>
+      <Header />
+      <ContentPreservation url={url} />
+      <Footer />
     </div>
   );
 };

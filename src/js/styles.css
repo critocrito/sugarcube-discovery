@@ -2,7 +2,8 @@
 @import "tachyons";
 
 :root {
-  --bg-main: var(--nord6);
+  --color-fg: var(--nord0);
+  --color-bg: var(--nord6);
 
   --color-youtube: #f00;
   --color-twitter: #1da1f2;
@@ -10,8 +11,29 @@
   --color-http: grey;
 }
 
+.color-main {
+  color: var(--color-fg);
+}
+
+.color-inverted {
+  color: var(--color-bg);
+}
+
 .bg-main {
-  background-color: var(--bg-main);
+  background-color: var(--color-bg);
+}
+
+.bg-inverted {
+  background-color: var(--color-fg);
+}
+
+.b--main {
+  border-color: var(--color-fg);
+}
+
+.inverted {
+  color: var(--color-bg);
+  background-color: var(--color-fg);
 }
 
 .bg-youtube {
