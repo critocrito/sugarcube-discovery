@@ -1,8 +1,8 @@
 import React, {useState} from "react";
-import {Button, Grid} from "semantic-ui-react";
 
 import {concat, empty} from "../projects";
 import {Project} from "../types";
+import Button from "./Button";
 import ProjectCreate from "./ProjectCreate";
 import ProjectList from "./ProjectList";
 
@@ -19,32 +19,31 @@ const ProjectPreferences = () => {
 
   if (mode === "list") {
     component = (
-      <>
-        <Grid.Column floated="right" width={5} textAlign="right">
-          <Button onClick={() => setMode("create")} color="green">
+      <section className="pa2 flex flex-column">
+        <div className="cf">
+          <Button
+            className="fr"
+            onClick={() => setMode("create")}
+            type="primary"
+            size="large"
+          >
             Add new Project
           </Button>
-        </Grid.Column>
-        <Grid.Column>
-          <ProjectList />
-        </Grid.Column>
-      </>
+        </div>
+        <ProjectList />
+      </section>
     );
   } else {
     component = (
-      <>
-        <Grid.Column>
-          <ProjectCreate
-            project={empty()}
-            submitHandler={createHandler}
-            cancelHandler={() => setMode("list")}
-          />
-        </Grid.Column>
-      </>
+      <ProjectCreate
+        project={empty()}
+        submitHandler={createHandler}
+        cancelHandler={() => setMode("list")}
+      />
     );
   }
 
-  return <Grid columns={1}>{component}</Grid>;
+  return component;
 };
 
 export default ProjectPreferences;

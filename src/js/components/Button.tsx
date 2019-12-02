@@ -4,8 +4,9 @@ import React from "react";
 interface ButtonProps {
   children?: React.ReactNode;
   className?: string;
-  type: "basic" | "primary" | "ok" | "cancel";
-  size: "tiny" | "normal" | "large";
+  onClick?: () => void;
+  type?: "basic" | "primary" | "ok" | "cancel";
+  size?: "tiny" | "normal" | "large";
 }
 
 const styles = {
@@ -24,6 +25,7 @@ const sizes = {
 const Button = ({
   type = "basic",
   size = "normal",
+  onClick = () => null,
   children,
   className,
 }: ButtonProps) => {
@@ -35,7 +37,7 @@ const Button = ({
   );
 
   return (
-    <button type="button" className={classes}>
+    <button type="button" className={classes} onClick={onClick}>
       {children}
     </button>
   );

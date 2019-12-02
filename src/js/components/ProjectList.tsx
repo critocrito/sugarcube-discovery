@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {Card} from "semantic-ui-react";
 
 import {list, remove, update} from "../projects";
 import {Project} from "../types";
@@ -33,7 +32,7 @@ const ProjectList = () => {
   };
 
   return (
-    <Card.Group>
+    <div>
       {projects.map((project) => (
         <ProjectItem
           key={project.id}
@@ -42,7 +41,7 @@ const ProjectList = () => {
           editHandler={updateHandler}
         />
       ))}
-    </Card.Group>
+    </div>
   );
 };
 
