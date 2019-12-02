@@ -10,6 +10,16 @@ interface ContentPreservationProps {
 }
 
 const ContentPreservation = ({url}: ContentPreservationProps) => {
+  const preserveQuery = async (type: string, term: string): Promise<void> => {
+    const resp = await fetch("http://127.0.0.1:8000", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({type, term}),
+    });
+  };
+
   const {type, platform} = detectContent(url);
 
   const iconSize = 28;
@@ -59,7 +69,11 @@ const ContentPreservation = ({url}: ContentPreservationProps) => {
         </div>
         <span className="mt1 f7 i pl2">{url}</span>
         <div className="mt5 mb3 tc">
-          <Button size="large" type="primary">
+          <Button
+            size="large"
+            type="primary"
+            onClick={() => preserveQuery(type, url)}
+          >
             Preserve
           </Button>
         </div>
