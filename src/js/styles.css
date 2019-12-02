@@ -1,10 +1,17 @@
+@import "./nord.css";
 @import "tachyons";
 
 :root {
+  --bg-main: var(--nord6);
+
   --color-youtube: #f00;
   --color-twitter: #1da1f2;
   --color-facebook: #4267b2;
   --color-http: grey;
+}
+
+.bg-main {
+  background-color: var(--bg-main);
 }
 
 .bg-youtube {
