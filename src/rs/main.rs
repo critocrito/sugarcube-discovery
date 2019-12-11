@@ -1,6 +1,6 @@
-#[macro_use]
-extern crate failure_derive;
-use actix_web::{web, App, HttpServer};
+#[macro_use] extern crate failure_derive;
+#[macro_use] extern crate log;
+use actix_web::{web, App, HttpServer, middleware::Logger};
 use actix_cors::Cors;
 
 mod handlers;
@@ -8,8 +8,12 @@ mod handlers;
 use crate::handlers::create_query;
 
 fn main() {
+    std::env::set_var("RUST_LOG", "error,actix_web=info");
+    env_logger::init();
+
     HttpServer::new(|| {
         App::new()
+            .wrap(Logger::default())
             .wrap(Cors::default())
             .service(
                 web::resource("/")

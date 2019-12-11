@@ -39,7 +39,7 @@ impl From<SqliteError> for CreateRejected {
     fn from(error: SqliteError) -> Self {
         match error {
             SqliteError::SqliteFailure(ref e, Some(ref s)) => {
-                println!("{:?} -> {:?}", e, s.to_string());
+                error!("{:?} -> {:?}", e, s.to_string());
                 match e.code {
                     ErrorCode::ConstraintViolation => CreateRejected::QueryExists,
                     _ => CreateRejected::DatastoreError(s.to_string()),
@@ -54,11 +54,9 @@ impl From<SqliteError> for CreateRejected {
 pub fn create_query(query: web::Json<QueryRequest>) -> Result<HttpResponse, CreateRejected> {
     let path = "./sugarcube.db";
     let conn = Connection::open(&path)?;
-    println!("{}, {}", query.query_type, query.query_term);
     conn.execute(
         "INSERT INTO queries (type, term) VALUES (?1, ?2)",
         params![query.query_type, query.query_term],
     )?;
-    println!("Discovered {} of type {}", query.query_term, query.query_type);
     Ok(HttpResponse::Created().finish())
 }
