@@ -1,15 +1,26 @@
 import c from "classnames";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Code, Facebook, Twitter, Youtube} from "react-feather";
 
+import {list} from "../projects";
+import {Project} from "../types";
 import {detectContent} from "../utils";
-import Button from "./Button";
+import PreservationProcess from "./PreservationProcess";
 
 interface ContentPreservationProps {
   url: string;
 }
 
 const ContentPreservation = ({url}: ContentPreservationProps) => {
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  useEffect(() => {
+    const f = async () => {
+      setProjects(await list());
+    };
+    f();
+  }, []);
+
   const preserveQuery = async (type: string, term: string): Promise<void> => {
     const resp = await fetch("http://127.0.0.1:8000", {
       method: "POST",
@@ -69,13 +80,7 @@ const ContentPreservation = ({url}: ContentPreservationProps) => {
         </div>
         <span className="mt1 f7 i pl2">{url}</span>
         <div className="mt5 mb3 tc">
-          <Button
-            size="large"
-            type="primary"
-            onClick={() => preserveQuery(type, url)}
-          >
-            Preserve
-          </Button>
+          <PreservationProcess type={type} term={url} projects={projects} />
         </div>
       </div>
     </>

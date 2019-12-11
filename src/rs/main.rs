@@ -1,3 +1,5 @@
+#[macro_use]
+extern crate failure_derive;
 use actix_web::{web, App, HttpServer};
 use actix_cors::Cors;
 

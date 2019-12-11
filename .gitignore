@@ -17,3 +17,4 @@ dist
 .env
 web-ext-artifacts
 target
+sugarcube.db
