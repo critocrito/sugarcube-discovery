@@ -30,11 +30,9 @@ const PreservationProcess = ({
           },
           body: JSON.stringify({type, term}),
         });
-        if (resp.status === 400) {
-          throw new Error("Query Exists!");
-        }
-        if (resp.status >= 401) {
-          throw new Error("Boom!");
+        if (resp.status >= 400) {
+          const msg = await resp.text();
+          throw new Error(msg);
         }
       },
     },
@@ -78,7 +76,7 @@ const PreservationProcess = ({
     case "loading":
       return <div>Searching...</div>;
     case "success":
-      return <div>Success! Data</div>;
+      return <div>Success!</div>;
     case "failure":
       return (
         <>
