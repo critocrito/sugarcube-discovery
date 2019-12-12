@@ -1,5 +1,6 @@
 #[macro_use] extern crate failure_derive;
 #[macro_use] extern crate log;
+#[macro_use] extern crate validator_derive;
 use actix_web::{web, App, HttpServer, middleware::Logger};
 use actix_cors::Cors;
 
