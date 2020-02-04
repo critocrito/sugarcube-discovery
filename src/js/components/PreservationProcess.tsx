@@ -62,14 +62,14 @@ const PreservationProcess = ({
               );
             })}
           </ul>
+          <button onClick={() => send("CANCEL", {query: "something"})}>
+            Back
+          </button>
           <button
             type="submit"
             onClick={() => send("SEND", {query: "something"})}
           >
-            Sending for something
-          </button>
-          <button onClick={() => send("CANCEL", {query: "something"})}>
-            Canceling for something
+            Next
           </button>
         </div>
       );
@@ -81,8 +81,8 @@ const PreservationProcess = ({
       return (
         <>
           <p>{current.context.error.message}</p>
-          <button onClick={() => send("RETRY")}>Retry</button>
           <button onClick={() => send("CANCEL")}>Cancel</button>
+          <button onClick={() => send("RETRY")}>Retry</button>
         </>
       );
     default:
