@@ -3,7 +3,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: "./index.tsx",
-
+  devtool: "source-map",
   module: {
     rules: [
       {

@@ -43,5 +43,5 @@ export const detectContent = (
       type: "facebook_post",
     };
 
-  return {type: "http_import", platform: "http"};
+  return {type: "http_url", platform: "http"};
 };

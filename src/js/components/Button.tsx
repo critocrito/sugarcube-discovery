@@ -7,6 +7,7 @@ interface ButtonProps {
   onClick?: () => void;
   type?: "basic" | "primary" | "ok" | "cancel";
   size?: "tiny" | "normal" | "large";
+  disabled?: boolean;
 }
 
 const styles = {
@@ -26,18 +27,25 @@ const Button = ({
   type = "basic",
   size = "normal",
   onClick = () => null,
+  disabled = false,
   children,
   className,
 }: ButtonProps) => {
   const classes = c(
-    "avenir pt2 pb2 tc v-mid ma2 br2 pointer dim outline-0 nowrap",
+    "avenir pt2 pb2 tc v-mid ma2 br2 outline-0 nowrap",
     styles[type] != null ? styles[type] : null,
     sizes[size] != null ? sizes[size] : null,
+    disabled ? "o-70" : "dim pointer",
     className,
   );
 
   return (
-    <button type="button" className={classes} onClick={onClick}>
+    <button
+      type="button"
+      disabled={disabled}
+      className={classes}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

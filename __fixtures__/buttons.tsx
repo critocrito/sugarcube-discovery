@@ -18,6 +18,16 @@ styles.forEach((style) => {
         {style} {size}
       </Button>,
     );
+    buttons.push(
+      <Button
+        disabled
+        key={`${style}-${size}-disabled`}
+        type={style}
+        size={size}
+      >
+        {style} {size} disabled
+      </Button>,
+    );
   });
 });
 
