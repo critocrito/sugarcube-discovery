@@ -1,8 +1,11 @@
-#[macro_use] extern crate failure_derive;
-#[macro_use] extern crate log;
-#[macro_use] extern crate validator_derive;
-use actix_web::{web, App, HttpServer, middleware::Logger};
+#[macro_use]
+extern crate failure_derive;
+#[macro_use]
+extern crate log;
+#[macro_use]
+extern crate validator_derive;
 use actix_cors::Cors;
+use actix_web::{middleware::Logger, web, App, HttpServer};
 
 mod handlers;
 
@@ -16,13 +19,10 @@ fn main() {
         App::new()
             .wrap(Logger::default())
             .wrap(Cors::default())
-            .service(
-                web::resource("/")
-                    .route(web::post().to(create_query))
-            )
+            .service(web::resource("/").route(web::post().to(create_query)))
     })
-        .bind("127.0.0.1:8000")
-        .expect("Can not bind to port 8000")
-        .run()
-        .unwrap();
+    .bind("127.0.0.1:8000")
+    .expect("Can not bind to port 8000")
+    .run()
+    .unwrap();
 }

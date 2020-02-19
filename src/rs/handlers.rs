@@ -3,6 +3,9 @@ use rusqlite::{params, Connection, Error as SqliteError, ErrorCode};
 use serde::Deserialize;
 use validator::{Validate, ValidationError, ValidationErrors};
 
+// All SQL queries are loaded
+const CREATE_QUERY_QUERY: &'static str = include_str!("../sql/create_query.sql");
+
 #[derive(Deserialize, Debug, Validate)]
 pub struct QueryRequest {
     #[validate(url(message = "term %s is not a valid URL"))]
@@ -69,6 +72,27 @@ impl From<ValidationErrors> for CreateRejected {
     }
 }
 
+enum Queries {
+    CreateQuery(QueryRequest),
+    // Other examples for DB query messages
+    // ListQueries,
+    // ListQueriesByType(String),
+}
+
+fn execute(conn: &Connection, query: Queries) -> Result<usize, SqliteError> {
+    match query {
+        Queries::CreateQuery(query) => conn.execute(
+            CREATE_QUERY_QUERY,
+            params![query.query_type, query.query_term],
+        ),
+        // Other examples for DB query messages
+        // Queries::ListQueries => conn.execute("SELECT * FROM queries", params![]),
+        // Queries::ListQueriesByType(query_type) => {
+        //     conn.execute("SELECT * FROM queries WHERE type = ?1", params![query_type])
+        // }
+    }
+}
+
 fn validate_query_type(query_type: &str) -> Result<(), ValidationError> {
     if query_type == "facebook_post"
         || query_type == "youtube_video"
@@ -86,9 +110,6 @@ pub fn create_query(query: web::Json<QueryRequest>) -> Result<HttpResponse, Crea
     query.validate()?;
     let path = "./sugarcube.db";
     let conn = Connection::open(&path)?;
-    conn.execute(
-        "INSERT INTO queries (type, term) VALUES (?1, ?2)",
-        params![query.query_type, query.query_term],
-    )?;
+    execute(&conn, Queries::CreateQuery(query.0))?;
     Ok(HttpResponse::Created().finish())
 }
